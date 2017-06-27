@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+</head>
+<body>
+    Это страница пользователя
+    {% if username %}
+    Привет, {{ username }}
+    <br>
+    Твой id - {{ id }}
+    {% else %}
+        Вы не авторизованы
+    {% endif %}
+</body>
+</html>
