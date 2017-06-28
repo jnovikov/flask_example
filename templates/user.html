@@ -10,6 +10,10 @@
     Привет, {{ username }}
     <br>
     Твой id - {{ id }}
+    <form method="get" action="/delete">
+        Удалить страницу
+        <input type="submit" value="Удалить">
+    </form>
     {% else %}
         Вы не авторизованы
     {% endif %}

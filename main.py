@@ -55,6 +55,21 @@ def log():
         return redirect('/user')
 
 
+@app.route('/delete')
+def delete():
+    id = session.get('id',None)
+    if id is None:
+        return "Need to login"
+    query = "DELETE FROM users WHERE id = '{}'".format(str(id))
+    db.execute(query)
+    conn.commit()
+    session.pop('id')
+    session.pop('login')
+    return "User deleted"
+
+
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def reg():
     if request.method == 'GET':
