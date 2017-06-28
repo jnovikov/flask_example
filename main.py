@@ -60,12 +60,14 @@ def delete():
     id = session.get('id',None)
     if id is None:
         return "Need to login"
-    query = "DELETE FROM users WHERE id = '{}'".format(str(id))
-    db.execute(query)
-    conn.commit()
-    session.pop('id')
-    session.pop('login')
-    return "User deleted"
+    if check_login(session['username']):
+        query = "DELETE FROM users WHERE id = '{}'".format(str(id))
+        db.execute(query)
+        conn.commit()
+        session.pop('id')
+        session.pop('username')
+        return "User deleted"
+    return "User not found"
 
 
 
